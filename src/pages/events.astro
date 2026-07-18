@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import site from '../data/site.json';
+
+const now = new Date();
+const all = (await getCollection('events')).filter((e) => !e.data.draft);
+const upcoming = all
+  .filter((e) => e.data.date >= now)
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const past = all
+  .filter((e) => e.data.date < now)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Events" description="The Oxford History Society termcard — talks, socials and welfare events.">
+  <section class="wrap page-head">
+    <p class="eyebrow reveal" data-d="1">What's on</p>
+    <h1 class="reveal" data-d="2">Termcard &amp; events</h1>
+    <p class="lede reveal" data-d="3">Academic talks, inter-college socials, and welfare events — all in one place. Everyone is welcome.</p>
+  </section>
+
+  <section class="wrap section events-body">
+    {upcoming.length > 0 ? (
+      <div class="stack">
+        {upcoming.map((e) => (
+          <EventCard title={e.data.title} date={e.data.date} time={e.data.time} type={e.data.type} location={e.data.location} summary={e.data.summary} link={e.data.link} />
+        ))}
+      </div>
+    ) : (
+      <div class="empty-panel">
+        <h2>No events scheduled just yet</h2>
+        <p>{site.announcement || 'Check back soon for our termcard.'} Follow us on Instagram <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">@{site.instagramHandle}</a> so you don't miss anything.</p>
+        <a class="btn btn-primary" href={site.joinFormUrl} target="_blank" rel="noopener">Become a member</a>
+      </div>
+    )}
+
+    {past.length > 0 && (
+      <div class="past">
+        <hr class="rule-ornament" />
+        <h2 class="past-head">Past events</h2>
+        <div class="stack past-stack">
+          {past.map((e) => (
+            <EventCard title={e.data.title} date={e.data.date} time={e.data.time} type={e.data.type} location={e.data.location} summary={e.data.summary} />
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .events-body { padding-top: 0; }
+  .stack { display: flex; flex-direction: column; gap: 1.1rem; max-width: 760px; }
+  .empty-panel {
+    max-width: 640px;
+    padding: 2.5rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    text-align: center;
+  }
+  .empty-panel h2 { margin-bottom: 0.6rem; }
+  .empty-panel p { color: var(--ink-soft); margin-bottom: 1.6rem; }
+  .past { margin-top: 1rem; }
+  .past-head { font-size: 1.5rem; color: var(--ink-soft); margin-bottom: 1.25rem; }
+  .past-stack { opacity: 0.78; }
+</style>

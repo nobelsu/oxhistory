@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+
+<BaseLayout title="Contact & Join" description="Get in touch with the Oxford History Society or become a member.">
+  <section class="wrap page-head">
+    <p class="eyebrow reveal" data-d="1">Get in touch</p>
+    <h1 class="reveal" data-d="2">Contact &amp; join</h1>
+  </section>
+
+  <section class="wrap section contact-grid">
+    <div class="join-card reveal" data-d="3">
+      <p class="eyebrow">Membership</p>
+      <h2>Become a member</h2>
+      <p>Open to every member of the University — history students and history lovers alike. Sign up through our membership form:</p>
+      <a class="btn btn-primary btn-lg" href={site.joinFormUrl} target="_blank" rel="noopener">Join the Society</a>
+    </div>
+
+    <div class="reach reveal" data-d="4">
+      <p class="eyebrow">Reach us</p>
+      <h2>Say hello</h2>
+      <p class="note">{site.contactNote}</p>
+      <ul class="channels">
+        <li>
+          <span class="ch-label">Instagram</span>
+          <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">@{site.instagramHandle}</a>
+        </li>
+        {site.contactEmail && (
+          <li>
+            <span class="ch-label">Email</span>
+            <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+          </li>
+        )}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-top: 0; align-items: start; }
+  .join-card {
+    padding: 2.5rem;
+    background: var(--navy);
+    color: rgba(244, 238, 222, 0.85);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+  }
+  .join-card .eyebrow { color: var(--gold-soft); }
+  .join-card h2 { color: var(--cream-soft); }
+  .join-card p { margin-bottom: 1.6rem; }
+  .btn-lg { padding: 1rem 2.2rem; font-size: 1rem; }
+
+  .reach { padding: 0.5rem 0; }
+  .note { color: var(--ink-soft); font-style: italic; }
+  .channels { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+  .channels li { display: flex; flex-direction: column; gap: 0.15rem; padding: 1rem 0; border-top: 1px solid var(--rule-soft); }
+  .ch-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .channels a { font-family: var(--font-display); font-size: 1.4rem; color: var(--navy); text-decoration: none; width: fit-content; }
+  .channels a:hover { color: var(--gold); }
+
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>

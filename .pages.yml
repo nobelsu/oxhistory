@@ -1,0 +1,127 @@
+# Pages CMS configuration — https://pagescms.org
+# This file tells the visual editor (app.pagescms.org) what a non-technical
+# maintainer can edit. Every field below shows up as a labelled form input.
+# You should not normally need to touch this file.
+
+media:
+  input: public
+  output: /
+
+content:
+  # -------- Site settings (one-off text used across the site) --------
+  - name: site
+    label: Site settings
+    type: file
+    path: src/data/site.json
+    fields:
+      - name: name
+        label: Full name
+        type: string
+      - name: shortName
+        label: Short name
+        type: string
+      - name: tagline
+        label: Tagline
+        type: string
+      - name: about
+        label: About paragraph
+        type: text
+      - name: announcement
+        label: Announcement banner (leave blank to hide)
+        type: string
+        required: false
+      - name: joinFormUrl
+        label: Membership / join form link
+        type: string
+      - name: instagramHandle
+        label: Instagram handle (without the @)
+        type: string
+      - name: contactEmail
+        label: Contact email (leave blank until you have one)
+        type: string
+        required: false
+      - name: contactNote
+        label: Contact note
+        type: text
+
+  # -------- Committee (the yearly list of members) --------
+  - name: committee
+    label: Committee
+    type: file
+    path: src/data/committee.json
+    fields:
+      - name: year
+        label: Committee year (e.g. 2026/2027)
+        type: string
+      - name: members
+        label: Members
+        type: object
+        list: true
+        fields:
+          - name: role
+            label: Role
+            type: string
+          - name: name
+            label: Name
+            type: string
+          - name: college
+            label: College
+            type: string
+          - name: subject
+            label: Subject
+            type: string
+
+  # -------- Events / termcard (one entry per event) --------
+  - name: events
+    label: Events
+    type: collection
+    path: src/content/events
+    filename: '{fields.title}.md'
+    view:
+      fields: [title, date, type]
+    fields:
+      - name: title
+        label: Event title
+        type: string
+      - name: date
+        label: Date
+        type: date
+      - name: time
+        label: Time (e.g. 6:00 PM)
+        type: string
+        required: false
+      - name: type
+        label: Type
+        type: select
+        options:
+          values: [academic, social, welfare]
+        default: academic
+      - name: location
+        label: Location
+        type: string
+        required: false
+      - name: summary
+        label: One-line summary
+        type: string
+        required: false
+      - name: link
+        label: Sign-up / tickets link
+        type: string
+        required: false
+      - name: draft
+        label: Draft (hide from the site)
+        type: boolean
+        default: false
+      - name: body
+        label: Full description
+        type: rich-text
+
+  # -------- Constitution (full governing document) --------
+  - name: constitution
+    label: Constitution
+    type: file
+    path: src/data/constitution.md
+    fields:
+      - name: body
+        label: Constitution text
+        type: rich-text

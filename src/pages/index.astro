@@ -1,0 +1,232 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import site from '../data/site.json';
+import committee from '../data/committee.json';
+
+const now = new Date();
+const events = (await getCollection('events'))
+  .filter((e) => !e.data.draft && e.data.date >= now)
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .slice(0, 3);
+
+// A few headline officers for the home page teaser.
+const leadRoles = ['President', 'Secretary', 'Treasurer'];
+const leads = leadRoles
+  .map((role) => committee.members.find((m) => m.role === role))
+  .filter(Boolean) as { role: string; name: string; college: string }[];
+---
+
+<BaseLayout>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal" data-d="1">University of Oxford · Est. for history lovers</p>
+        <h1 class="reveal" data-d="2">Oxford<br />History<br />Society</h1>
+        <p class="lede reveal" data-d="3">{site.tagline} Talks by leading historians, inter-college socials, and a warm community for anyone who loves the past.</p>
+        <div class="hero-actions reveal" data-d="4">
+          <a class="btn btn-primary" href={site.joinFormUrl} target="_blank" rel="noopener">Become a member</a>
+          <a class="btn btn-ghost" href="/events">See what's on</a>
+        </div>
+      </div>
+      <div class="hero-seal reveal" data-d="3">
+        <img src="/crest.svg" alt="Oxford University History Society crest" width="340" height="340" />
+      </div>
+    </div>
+    {site.announcement && (
+      <div class="wrap">
+        <p class="announce reveal" data-d="5"><span>Notice</span>{site.announcement}</p>
+      </div>
+    )}
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about">
+    <div class="wrap about-grid">
+      <div>
+        <p class="eyebrow">About the Society</p>
+        <h2>Bringing history to life across Oxford.</h2>
+      </div>
+      <p class="about-text">{site.about}</p>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="section pillars-sec">
+    <div class="wrap">
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pillar-num">01</span>
+          <h3>Academic</h3>
+          <p>Talks by leading historians, panels, and discussions that reach beyond the reading list.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">02</span>
+          <h3>Social</h3>
+          <p>Inter-college pub quizzes, bar crawls, and dinners — history is better in good company.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">03</span>
+          <h3>Welfare</h3>
+          <p>Prelims advice picnics and caffeinated study sessions to see you through term.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="section events-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">What's on</p>
+          <h2>Upcoming events</h2>
+        </div>
+        <a class="btn btn-ghost" href="/events">Full termcard</a>
+      </div>
+      {events.length > 0 ? (
+        <div class="events-grid">
+          {events.map((e) => (
+            <EventCard title={e.data.title} date={e.data.date} time={e.data.time} type={e.data.type} location={e.data.location} summary={e.data.summary} link={e.data.link} />
+          ))}
+        </div>
+      ) : (
+        <p class="empty">Our termcard will be posted soon. Follow us on Instagram <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">@{site.instagramHandle}</a> for the latest.</p>
+      )}
+    </div>
+  </section>
+
+  <!-- COMMITTEE TEASER -->
+  <section class="section leads-sec">
+    <div class="wrap">
+      <p class="eyebrow">The Committee {committee.year}</p>
+      <h2>Run by history students, for history students.</h2>
+      <div class="leads">
+        {leads.map((m) => (
+          <div class="lead">
+            <p class="lead-role">{m.role}</p>
+            <p class="lead-name">{m.name}</p>
+            <p class="lead-college">{m.college}</p>
+          </div>
+        ))}
+      </div>
+      <a class="btn btn-ghost" href="/committee">Meet the full committee</a>
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section class="join-cta">
+    <div class="wrap join-inner">
+      <h2>Join the Oxford History Society</h2>
+      <p>Open to every member of the University — history students and history lovers alike. Membership takes a minute.</p>
+      <a class="btn btn-primary btn-lg" href={site.joinFormUrl} target="_blank" rel="noopener">Sign up now</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero { padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(1.5rem, 3vw, 2.5rem); position: relative; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 2rem; }
+  .hero-copy h1 { margin: 0.1em 0 0.35em; letter-spacing: -0.01em; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.8rem; }
+  .hero-seal { display: flex; justify-content: center; }
+  .hero-seal img {
+    width: min(360px, 80%);
+    height: auto;
+    filter: drop-shadow(0 24px 40px rgba(0, 24, 50, 0.22));
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  .announce {
+    margin-top: 2.5rem;
+    padding: 0.9rem 1.3rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .announce span {
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--gold);
+    margin-right: 0.9rem;
+  }
+
+  /* ABOUT */
+  .about { border-top: 1px solid var(--rule-soft); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+  .about-text { font-size: 1.15rem; line-height: 1.7; }
+  .about-text::first-letter {
+    font-family: var(--font-display);
+    font-size: 3.4rem;
+    font-weight: 600;
+    float: left;
+    line-height: 0.8;
+    margin: 0.08em 0.12em 0 0;
+    color: var(--navy);
+  }
+
+  /* PILLARS */
+  .pillars-sec { padding-top: 0; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pillar {
+    padding: 2rem 1.75rem;
+    background: var(--navy);
+    color: rgba(244, 238, 222, 0.85);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar h3 { color: var(--cream-soft); margin-bottom: 0.4rem; }
+  .pillar p { margin: 0; }
+  .pillar-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--gold-soft);
+    opacity: 0.45;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* section heads */
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+  .sec-head h2 { margin: 0; }
+
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+  .empty { font-size: 1.1rem; color: var(--ink-soft); font-style: italic; }
+  .events-sec { background: var(--cream-soft); border-block: 1px solid var(--rule-soft); }
+
+  /* leads */
+  .leads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+  .lead { padding: 1.4rem 0; border-top: 2px solid var(--navy); }
+  .lead-role { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 0 0 0.5rem; }
+  .lead-name { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); margin: 0 0 0.2rem; }
+  .lead-college { margin: 0; color: var(--ink-soft); font-style: italic; }
+
+  /* JOIN CTA */
+  .join-cta { background: var(--navy); color: var(--cream-soft); padding-block: clamp(3.5rem, 7vw, 6rem); text-align: center; }
+  .join-inner { max-width: 640px; }
+  .join-cta h2 { color: var(--cream-soft); }
+  .join-cta p { color: rgba(244, 238, 222, 0.78); font-size: 1.15rem; margin-bottom: 1.8rem; }
+  .btn-lg { padding: 1rem 2.4rem; font-size: 1rem; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-seal { order: -1; }
+    .hero-seal img { width: min(240px, 60%); animation: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .leads { grid-template-columns: 1fr; }
+    .sec-head { flex-direction: column; align-items: flex-start; }
+  }
+</style>

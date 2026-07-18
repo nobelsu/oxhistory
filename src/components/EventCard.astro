@@ -1,0 +1,94 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  time?: string;
+  type: 'academic' | 'social' | 'welfare';
+  location?: string;
+  summary?: string;
+  link?: string;
+}
+const { title, date, time, type, location, summary, link } = Astro.props;
+
+const day = date.toLocaleDateString('en-GB', { day: 'numeric' });
+const month = date.toLocaleDateString('en-GB', { month: 'short' });
+const weekday = date.toLocaleDateString('en-GB', { weekday: 'long' });
+
+const typeLabel = { academic: 'Academic', social: 'Social', welfare: 'Welfare' }[type];
+---
+
+<article class:list={['event-card', `is-${type}`]}>
+  <div class="date-chip" aria-hidden="true">
+    <span class="d-day">{day}</span>
+    <span class="d-month">{month}</span>
+  </div>
+  <div class="event-body">
+    <span class="tag">{typeLabel}</span>
+    <h3 class="event-title">{title}</h3>
+    <p class="event-meta">
+      {weekday}{time && ` · ${time}`}{location && ` · ${location}`}
+    </p>
+    {summary && <p class="event-summary">{summary}</p>}
+    {link && <a class="event-link" href={link} target="_blank" rel="noopener">Details &amp; sign-up →</a>}
+  </div>
+</article>
+
+<style>
+  .event-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.4rem;
+    padding: 1.6rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: 0 12px 34px -26px rgba(0, 24, 50, 0.5);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 44px -26px rgba(0, 24, 50, 0.55);
+    border-color: var(--gold-soft);
+  }
+
+  .date-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    padding: 0.6rem 0;
+    background: var(--navy);
+    color: var(--cream-soft);
+    border-radius: 3px;
+    align-self: start;
+  }
+  .d-day { font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; line-height: 1; }
+  .d-month { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.2rem; }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.55rem;
+  }
+  .is-academic .tag { background: rgba(0, 33, 71, 0.1); color: var(--navy); }
+  .is-social .tag { background: rgba(169, 130, 47, 0.16); color: var(--gold); }
+  .is-welfare .tag { background: rgba(70, 110, 90, 0.15); color: #3c6b52; }
+
+  .event-title { margin: 0 0 0.3rem; font-size: 1.45rem; }
+  .event-meta { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--ink-soft); font-style: italic; }
+  .event-summary { margin: 0 0 0.6rem; }
+  .event-link { font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; text-decoration: none; }
+  .event-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 480px) {
+    .event-card { grid-template-columns: 1fr; gap: 1rem; }
+    .date-chip { flex-direction: row; gap: 0.4rem; width: fit-content; padding: 0.35rem 0.8rem; }
+    .d-day { font-size: 1.3rem; }
+  }
+</style>

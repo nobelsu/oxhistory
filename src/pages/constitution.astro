@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content } from '../data/constitution.md';
+---
+
+<BaseLayout title="Constitution" description="The constitution of the Oxford History Society.">
+  <section class="wrap page-head">
+    <p class="eyebrow reveal" data-d="1">Governance</p>
+    <h1 class="reveal" data-d="2">Constitution</h1>
+    <p class="lede reveal" data-d="3">The Oxford History Society is a registered student society of the University of Oxford. Our constitution is published here in full, as required by the University's regulations.</p>
+  </section>
+
+  <section class="wrap section doc-body">
+    <article class="prose">
+      <Content />
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .doc-body { padding-top: 0; }
+  .prose { max-width: 74ch; }
+  .prose :global(h2) {
+    font-size: 1.6rem;
+    margin-top: 2.4rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .prose :global(h2:first-of-type) { margin-top: 0; }
+  .prose :global(p) { color: var(--ink-soft); }
+  .prose :global(ul) { color: var(--ink-soft); padding-left: 1.2rem; }
+  .prose :global(li) { margin-bottom: 0.4rem; }
+  .prose :global(strong) { color: var(--navy); }
+</style>

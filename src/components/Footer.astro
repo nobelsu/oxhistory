@@ -1,0 +1,79 @@
+---
+import site from '../data/site.json';
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <img src="/crest.svg" alt="" width="64" height="64" />
+      <p class="foot-name">Oxford University History Society</p>
+      <p class="foot-tag">{site.tagline}</p>
+    </div>
+
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="/about">About</a>
+      <a href="/committee">Committee</a>
+      <a href="/events">Events</a>
+      <a href="/constitution">Constitution</a>
+      <a href="/contact">Contact</a>
+      <a href={site.joinFormUrl} target="_blank" rel="noopener">Join</a>
+    </nav>
+
+    <div class="foot-social">
+      <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">
+        Instagram @{site.instagramHandle}
+      </a>
+      {site.contactEmail && <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>}
+    </div>
+  </div>
+
+  <div class="wrap foot-fine">
+    <p>© {year} Oxford University History Society. A registered student society of the University of Oxford.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    background: var(--navy);
+    color: rgba(244, 238, 222, 0.82);
+    padding-block: clamp(2.75rem, 5vw, 4rem) 1.5rem;
+  }
+  .foot {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .foot-brand img { filter: brightness(0) invert(1); opacity: 0.92; }
+  .foot-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--cream-soft);
+    margin: 0.9rem 0 0.2rem;
+  }
+  .foot-tag { font-style: italic; color: rgba(244, 238, 222, 0.65); margin: 0; }
+
+  .foot-nav, .foot-social { display: flex; flex-direction: column; gap: 0.7rem; padding-top: 0.4rem; }
+  .site-footer a {
+    color: rgba(244, 238, 222, 0.82);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    width: fit-content;
+    transition: color 0.18s ease;
+  }
+  .site-footer a:hover { color: var(--gold-soft); }
+
+  .foot-fine {
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(244, 238, 222, 0.16);
+  }
+  .foot-fine p { margin: 0; font-size: 0.82rem; color: rgba(244, 238, 222, 0.55); }
+
+  @media (max-width: 720px) {
+    .foot { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+</style>

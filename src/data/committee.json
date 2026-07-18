@@ -1,0 +1,18 @@
+{
+  "year": "2026/2027",
+  "members": [
+    { "role": "President", "name": "Arielle Trakhtenberg", "college": "St Anne's College", "subject": "History" },
+    { "role": "Secretary", "name": "Kaelyn Jones", "college": "St Hilda's College", "subject": "History" },
+    { "role": "Treasurer", "name": "David Percival", "college": "Hertford College", "subject": "Archaeology and Anthropology" },
+    { "role": "Welfare Officer", "name": "Evangeli Saha", "college": "University College", "subject": "History" },
+    { "role": "Social Media Manager", "name": "Jas Mauj", "college": "Jesus College", "subject": "History" },
+    { "role": "Sponsorship and Marketing Director", "name": "Natalya Downing", "college": "Regent's Park College", "subject": "History and Politics" },
+    { "role": "Sponsorship and Marketing Director", "name": "Polly Tinline", "college": "St Anne's College", "subject": "English" },
+    { "role": "Academic Events Officer", "name": "Oonagh Mathur", "college": "Keble College", "subject": "Ancient and Modern History" },
+    { "role": "Academic Events Officer", "name": "Gavriella Epstein-Lightman", "college": "St Hugh's College", "subject": "History" },
+    { "role": "Academic Events Officer", "name": "Oran Docker", "college": "Somerville College", "subject": "History" },
+    { "role": "Social Events Officer", "name": "Rosalind Lucas", "college": "Magdalen College", "subject": "Ancient and Modern History" },
+    { "role": "Social Events Officer", "name": "Annabelle Turlier", "college": "St Anne's College", "subject": "History" },
+    { "role": "Social Events Officer", "name": "Jaspreet Kaur", "college": "The Queen's College", "subject": "History" }
+  ]
+}

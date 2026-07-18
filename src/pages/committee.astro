@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import committee from '../data/committee.json';
+import site from '../data/site.json';
+
+// Display order for the roles. Any role not listed here falls to the end,
+// so adding a new role in the CMS still shows up without editing this file.
+const roleOrder = [
+  'President',
+  'Secretary',
+  'Treasurer',
+  'Welfare Officer',
+  'Social Media Manager',
+  'Sponsorship and Marketing Director',
+  'Academic Events Officer',
+  'Social Events Officer',
+];
+
+// Group members by role, preserving the order above.
+const grouped = new Map<string, typeof committee.members>();
+for (const m of committee.members) {
+  if (!grouped.has(m.role)) grouped.set(m.role, []);
+  grouped.get(m.role)!.push(m);
+}
+const roles = [...grouped.keys()].sort((a, b) => {
+  const ia = roleOrder.indexOf(a); const ib = roleOrder.indexOf(b);
+  return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+});
+---
+
+<BaseLayout title="Committee" description={`The Oxford History Society committee for ${committee.year}.`}>
+  <section class="wrap page-head">
+    <p class="eyebrow reveal" data-d="1">The Committee · {committee.year}</p>
+    <h1 class="reveal" data-d="2">Meet the committee</h1>
+    <p class="lede reveal" data-d="3">The people who run the Society — elected each year to organise our academic, social and welfare programme.</p>
+  </section>
+
+  <section class="wrap section committee-body">
+    {roles.map((role) => {
+      const people = grouped.get(role)!;
+      const plural = people.length > 1;
+      return (
+        <div class="role-group">
+          <h2 class="role-heading">{plural ? role + 's' : role}</h2>
+          <div class="member-grid">
+            {people.map((m) => (
+              <article class="member">
+                <div class="monogram" aria-hidden="true">{m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}</div>
+                <div>
+                  <p class="member-name">{m.name}</p>
+                  <p class="member-college">{m.college}</p>
+                  <p class="member-subject">{m.subject}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+
+    <div class="contact-note">
+      <p>Questions for the committee? Contact us on Instagram <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">@{site.instagramHandle}</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .committee-body { padding-top: 0; }
+  .role-group { margin-bottom: 2.75rem; }
+  .role-heading {
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+  .member {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.2rem 1.3rem;
+    background: var(--paper);
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .member:hover { transform: translateY(-2px); border-color: var(--gold-soft); }
+  .monogram {
+    flex: none;
+    width: 52px; height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--cream-soft);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .member-name { font-family: var(--font-display); font-size: 1.35rem; color: var(--navy); margin: 0 0 0.1rem; line-height: 1.1; }
+  .member-college { margin: 0; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
+  .member-subject { margin: 0.1rem 0 0; font-size: 0.88rem; color: var(--gold); }
+
+  .contact-note { margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule-soft); color: var(--ink-soft); }
+  .contact-note p { margin: 0; }
+</style>
