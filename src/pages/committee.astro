@@ -45,8 +45,12 @@ const roles = [...grouped.keys()].sort((a, b) => {
           <div class="member-grid">
             {people.map((m) => (
               <article class="member">
-                <div class="monogram" aria-hidden="true">{m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}</div>
-                <div>
+                {m.photo ? (
+                  <img class="member-photo" src={m.photo} alt={m.name} loading="lazy" width="360" height="450" />
+                ) : (
+                  <div class="member-photo monogram" aria-hidden="true">{m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}</div>
+                )}
+                <div class="member-info">
                   <p class="member-name">{m.name}</p>
                   <p class="member-college">{m.college}</p>
                   <p class="member-subject">{m.subject}</p>
@@ -78,34 +82,43 @@ const roles = [...grouped.keys()].sort((a, b) => {
     margin-bottom: 1.25rem;
     border-bottom: 1px solid var(--rule);
   }
-  .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+  .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
   .member {
     display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 1.2rem 1.3rem;
+    flex-direction: column;
     background: var(--paper);
     border: 1px solid var(--rule-soft);
-    border-radius: 3px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 34px -28px rgba(0, 24, 50, 0.5);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
   }
-  .member:hover { transform: translateY(-2px); border-color: var(--gold-soft); }
-  .monogram {
-    flex: none;
-    width: 52px; height: 52px;
+  .member:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-soft);
+    box-shadow: 0 22px 44px -26px rgba(0, 24, 50, 0.5);
+  }
+  .member-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    background: var(--cream);
+  }
+  .monogram.member-photo {
     display: grid;
     place-items: center;
-    border-radius: 50%;
     background: var(--navy);
     color: var(--cream-soft);
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 3rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
   }
-  .member-name { font-family: var(--font-display); font-size: 1.35rem; color: var(--navy); margin: 0 0 0.1rem; line-height: 1.1; }
+  .member-info { padding: 1.1rem 1.2rem 1.3rem; border-top: 2px solid var(--gold); }
+  .member-name { font-family: var(--font-display); font-size: 1.35rem; color: var(--navy); margin: 0 0 0.15rem; line-height: 1.1; }
   .member-college { margin: 0; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
-  .member-subject { margin: 0.1rem 0 0; font-size: 0.88rem; color: var(--gold); }
+  .member-subject { margin: 0.15rem 0 0; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.01em; }
 
   .contact-note { margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule-soft); color: var(--ink-soft); }
   .contact-note p { margin: 0; }

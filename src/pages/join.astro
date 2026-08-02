@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+
+// Embeddable version of the Google Form. If the join link ever changes, update
+// `joinFormEmbedUrl` in src/data/site.json (add ?embedded=true to the viewform URL).
+const embedUrl = site.joinFormEmbedUrl;
+---
+
+<BaseLayout title="Join" description="Become a member of the Oxford History Society.">
+  <section class="wrap page-head">
+    <p class="eyebrow reveal" data-d="1">Membership</p>
+    <h1 class="reveal" data-d="2">Join the Society</h1>
+    <p class="lede reveal" data-d="3">Open to every member of the University — history students and history lovers alike. Fill in the form below to become a member.</p>
+  </section>
+
+  <section class="wrap section join-body">
+    {embedUrl ? (
+      <div class="form-frame reveal" data-d="4">
+        <iframe
+          src={embedUrl}
+          title="OUHS membership form"
+          loading="lazy"
+          width="100%"
+          height="1200"
+        >Loading…</iframe>
+      </div>
+    ) : (
+      <p class="lede">The membership form isn't available right now.</p>
+    )}
+
+    <p class="fallback">
+      Trouble with the form? <a href={site.joinFormUrl} target="_blank" rel="noopener">Open it in a new tab</a> instead.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .join-body { padding-top: 0; }
+  .form-frame {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .form-frame iframe { display: block; border: 0; width: 100%; }
+  .fallback { text-align: center; margin-top: 1.5rem; color: var(--ink-soft); font-style: italic; }
+</style>

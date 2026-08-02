@@ -45,9 +45,11 @@ That's it. From now on you just log into Pages CMS to make changes.
 
 1. Open **Committee**.
 2. Change the **Committee year** (e.g. `2026/2027` → `2027/2028`).
-3. For each member: edit the **Role**, **Name**, **College** and **Subject**.
+3. For each member: edit the **Role**, **Name**, **College**, **Subject** and **Photo**.
    - Use the **＋ / Add** button to add a new person.
    - Use the **🗑 / remove** button to delete someone who's left.
+   - **Photo** is optional — upload a headshot and it appears on their card. If you leave it blank,
+     the card shows their initials instead. Portrait photos look best.
    - Roles with more than one person (e.g. *Academic Events Officer*) are automatically grouped
      and pluralised on the site — just give each person the same **Role** text.
 4. **Save**.
@@ -69,6 +71,27 @@ That's it. From now on you just log into Pages CMS to make changes.
 
 > There are two example events in there to start with. Edit or delete them once you have real ones.
 
+### Add or remove a sponsor
+
+1. Open **Sponsors**.
+2. Edit the **Intro paragraph** if you like.
+3. Under **Sponsors**, click **Add** for each one:
+   - **Name** (required)
+   - **Logo image** — upload a logo (optional; if none, the name shows as text)
+   - **Website link** — makes the card clickable (optional)
+   - **Short description** (optional)
+4. **Save**. With no sponsors added, the page shows a friendly "Interested in sponsoring us?" call-out instead.
+
+### Change the membership (Join) form
+
+The **Join** page embeds your Google Form directly. If you ever swap the form:
+
+1. Open your Google Form → **Send** → the **`< >`** (embed) tab → copy the URL inside `src="…"`
+   (it ends in `/viewform?embedded=true`).
+2. In the CMS open **Site settings** → paste it into **Membership form EMBED link**.
+3. Also update the plain **Membership / join form link** (the normal share link, used as a fallback).
+4. **Save**.
+
 ### Change the announcement banner (the notice on the homepage)
 
 1. Open **Site settings**.
@@ -82,11 +105,11 @@ That's it. From now on you just log into Pages CMS to make changes.
    (leave the email blank until the society has one — it stays hidden while empty).
 3. **Save**.
 
-### Edit the constitution
+### Edit the constitution or complaints procedure
 
-1. Open **Constitution**.
-2. Edit the text. **Save**. (The University requires the current constitution to be published
-   here, so keep it up to date after any AGM changes.)
+1. Open **Constitution** (or **Complaints Procedure**).
+2. Edit the text. **Save**. (The University requires the current constitution *and* complaints
+   procedure to be published on the site, so keep them up to date after any AGM changes.)
 
 ---
 

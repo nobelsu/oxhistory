@@ -1,10 +1,10 @@
 {
   "name": "Oxford University History Society",
   "shortName": "OUHS",
-  "tagline": "Promoting history within Oxford life.",
   "about": "The Oxford History Society aims to promote history within Oxford life and bring together people who are passionate about history. Whether you're interested in academic events like talks by leading historians, social events like inter-college pub quizzes and bar crawls, or welfare events such as Prelims advice picnics and caffeinated study sessions, OUHS is a society for history students and history lovers alike!",
   "announcement": "Our Trinity termcard will be posted in early October.",
   "joinFormUrl": "https://forms.gle/CsjzH5yGdTrTNsM2A",
+  "joinFormEmbedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd4yH1L-FLhPxSyRHC4F7FMhqHQYQn54SEit37W3wtV5c749Q/viewform?embedded=true",
   "instagramHandle": "oxhistorysociety",
   "contactEmail": "",
   "contactNote": "We're currently waiting to receive our Oxford email account — please contact us on Instagram in the meantime."

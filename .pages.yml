@@ -20,9 +20,6 @@ content:
       - name: shortName
         label: Short name
         type: string
-      - name: tagline
-        label: Tagline
-        type: string
       - name: about
         label: About paragraph
         type: text
@@ -31,7 +28,10 @@ content:
         type: string
         required: false
       - name: joinFormUrl
-        label: Membership / join form link
+        label: Membership / join form link (share link)
+        type: string
+      - name: joinFormEmbedUrl
+        label: Membership form EMBED link (the /viewform?embedded=true URL)
         type: string
       - name: instagramHandle
         label: Instagram handle (without the @)
@@ -70,6 +70,40 @@ content:
           - name: subject
             label: Subject
             type: string
+          - name: photo
+            label: Photo
+            type: image
+            required: false
+
+  # -------- Sponsors (organisations that support the society) --------
+  - name: sponsors
+    label: Sponsors
+    type: file
+    path: src/data/sponsors.json
+    fields:
+      - name: intro
+        label: Intro paragraph
+        type: text
+      - name: sponsors
+        label: Sponsors
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+          - name: logo
+            label: Logo image (optional)
+            type: image
+            required: false
+          - name: url
+            label: Website link (optional)
+            type: string
+            required: false
+          - name: blurb
+            label: Short description (optional)
+            type: string
+            required: false
 
   # -------- Events / termcard (one entry per event) --------
   - name: events
@@ -124,4 +158,14 @@ content:
     fields:
       - name: body
         label: Constitution text
+        type: rich-text
+
+  # -------- Complaints Procedure (required by the Clubs Office) --------
+  - name: complaints
+    label: Complaints Procedure
+    type: file
+    path: src/data/complaints.md
+    fields:
+      - name: body
+        label: Complaints procedure text
         type: rich-text
