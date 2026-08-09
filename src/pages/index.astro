@@ -134,32 +134,43 @@ const leads = leadRoles
 
 <style>
   /* HERO */
-  .hero { padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(1.5rem, 3vw, 2.5rem); position: relative; overflow: hidden; }
-  /* Faint historical engraving (Radcliffe Camera) rising from the base of the hero. */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: min(86vh, 860px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: clamp(2rem, 5vw, 4rem);
+  }
+  /* Large historical engraving (Radcliffe Camera) filling the opening screen. */
   .hero::before {
     content: '';
     position: absolute;
-    left: 0; right: 0; bottom: 0; top: 0;
+    inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: url('/engravings/radcliffe-camera.webp') no-repeat center bottom;
-    background-size: min(1150px, 120%) auto;
-    opacity: 0.1;
-    -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0.45) 34%, transparent 66%);
-    mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0.45) 34%, transparent 66%);
+    background: url('/engravings/radcliffe-camera.webp') no-repeat center 42% / cover;
+    opacity: 0.2;
+  }
+  /* Readability scrim: keeps the left-hand text crisp, lets the engraving read on the right. */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.12) 72%, rgba(255,255,255,0) 100%);
   }
   .hero > .wrap { position: relative; z-index: 1; }
-  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 2rem; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 2rem; max-width: 46rem; }
+  .hero-seal { display: none; }
   .hero-copy h1 { margin: 0.1em 0 0.35em; letter-spacing: -0.01em; }
   /* Swappable banner wordmark (set in Site settings). Falls back to the text
      heading above when no image is set. */
   .hero-banner { width: min(540px, 100%); height: auto; margin: 0 0 1.4rem; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.8rem; }
-  .hero-seal { display: flex; justify-content: center; }
-  .hero-seal img {
-    width: min(230px, 58%);
-    height: auto;
-  }
+  .hero-seal { display: none; }
 
   .announce {
     margin-top: 2.5rem;
