@@ -17,6 +17,9 @@ const year = 2026;
       <a href="/sponsors">Sponsors</a>
       <a href="/contact">Contact us</a>
       <a href="/join">Join</a>
+    </nav>
+
+    <nav class="foot-nav" aria-label="Governance">
       <a href="/constitution">Constitution</a>
       <a href="/complaints">Complaints Procedure</a>
     </nav>
@@ -43,7 +46,7 @@ const year = 2026;
   }
   .foot {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
     gap: 2.5rem;
     align-items: start;
   }
@@ -74,7 +77,10 @@ const year = 2026;
   }
   .foot-fine p { margin: 0; font-size: 0.82rem; color: rgba(244, 238, 222, 0.55); }
 
-  @media (max-width: 720px) {
+  @media (max-width: 960px) {
+    .foot { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
     .foot { grid-template-columns: 1fr; gap: 1.75rem; }
   }
 </style>
