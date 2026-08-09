@@ -12,8 +12,6 @@ import site from '../data/site.json';
   <section class="wrap section about-body">
     <p class="lede reveal" data-d="3">{site.about}</p>
 
-    <hr class="rule-ornament" />
-
     <div class="cols">
       <div class="col">
         <h3>Academic events</h3>
@@ -38,8 +36,8 @@ import site from '../data/site.json';
 
 <style>
   .about-body { padding-top: 0; }
-  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 1rem 0 2.5rem; }
-  .col { padding-top: 1.2rem; border-top: 2px solid var(--gold); }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 4vw, 3rem); margin: 2.75rem 0; }
+  .col { padding-top: 1.2rem; border-top: 2px solid var(--royal); }
   .col h3 { margin-bottom: 0.4rem; }
   .col p { margin: 0; color: var(--ink-soft); }
   .cta-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
