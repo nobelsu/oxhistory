@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
+import Engraving from '../components/Engraving.astro';
 import site from '../data/site.json';
 import committee from '../data/committee.json';
 
@@ -104,6 +105,20 @@ const leads = leadRoles
     </div>
   </section>
 
+  <!-- HISTORY / ENGRAVINGS -->
+  <section class="section history-sec">
+    <div class="wrap">
+      <p class="eyebrow">Windows into Oxford's past</p>
+      <h2>A society steeped in history.</h2>
+      <p class="lede">The city we study in is a living archive. Hover over — or tap — each engraving for a glimpse of its story.</p>
+      <div class="engraving-grid">
+        <Engraving slug="sheldonian" />
+        <Engraving slug="bodleian" />
+        <Engraving slug="magdalen" />
+      </div>
+    </div>
+  </section>
+
   <!-- COMMITTEE TEASER -->
   <section class="section leads-sec">
     <div class="wrap">
@@ -196,6 +211,14 @@ const leads = leadRoles
   .about { border-top: 1px solid var(--rule-soft); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
   .about-text { font-size: 1.1rem; line-height: 1.75; color: var(--ink-soft); }
+
+  /* HISTORY / ENGRAVINGS */
+  .history-sec { background: var(--cream-soft); border-block: 1px solid var(--rule-soft); }
+  .history-sec .lede { margin-bottom: 0; }
+  .engraving-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.25rem; }
+  @media (max-width: 820px) {
+    .engraving-grid { grid-template-columns: 1fr; max-width: 460px; }
+  }
 
   /* PILLARS */
   .pillars-sec { padding-top: 0; }

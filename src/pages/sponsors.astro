@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Engraving from '../components/Engraving.astro';
 import sponsors from '../data/sponsors.json';
 import site from '../data/site.json';
 
@@ -41,11 +42,16 @@ const list = sponsors.sponsors ?? [];
         <a class="btn btn-primary" href="/contact">Get in touch</a>
       </div>
     )}
+
+    <div class="sponsors-eng">
+      <Engraving slug="bodleian" id="sponsors" />
+    </div>
   </section>
 </BaseLayout>
 
 <style>
   .sponsors-body { padding-top: 0; }
+  .sponsors-eng { max-width: 620px; margin: 3rem auto 0; }
   .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
   .sponsor-card {
     display: flex;

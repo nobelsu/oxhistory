@@ -1,0 +1,37 @@
+{
+  "radcliffe": {
+    "image": "/engravings/radcliffe-camera.webp",
+    "title": "The Radcliffe Camera",
+    "year": "1737–1749",
+    "context": "Designed by James Gibbs and built with a bequest from the physician Dr John Radcliffe, it was England's first circular library and remains one of Oxford's most recognisable buildings.",
+    "credit": "Wellcome Collection"
+  },
+  "sheldonian": {
+    "image": "/engravings/sheldonian.webp",
+    "title": "The Sheldonian Theatre",
+    "year": "1664–1669",
+    "context": "Sir Christopher Wren's first major commission, funded by Archbishop Gilbert Sheldon. It is the University's ceremonial hall — degrees are still conferred here today.",
+    "credit": "Wellcome Collection"
+  },
+  "bodleian": {
+    "image": "/engravings/bodleian.webp",
+    "title": "The Bodleian Library",
+    "year": "opened 1602",
+    "context": "Founded by Sir Thomas Bodley, the 'Boduleian' is one of the oldest libraries in Europe and a legal deposit library — entitled to a copy of every book published in Britain.",
+    "credit": "Wellcome Collection"
+  },
+  "magdalen": {
+    "image": "/engravings/magdalen.webp",
+    "title": "Magdalen College Tower",
+    "year": "completed 1509",
+    "context": "The Great Tower stands over the River Cherwell. Every May Morning, the college choir sings from its top at 6am to crowds gathered on Magdalen Bridge below.",
+    "credit": "Wellcome Collection"
+  },
+  "clarendon": {
+    "image": "/engravings/clarendon.webp",
+    "title": "The Clarendon Building",
+    "year": "1711–1715",
+    "context": "Designed by Nicholas Hawksmoor and built to house the Oxford University Press, funded partly by profits from the Earl of Clarendon's 'History of the Rebellion'.",
+    "credit": "Wellcome Collection"
+  }
+}
