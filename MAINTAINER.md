@@ -92,6 +92,15 @@ The **Join** page embeds your Google Form directly. If you ever swap the form:
 3. Also update the plain **Membership / join form link** (the normal share link, used as a fallback).
 4. **Save**.
 
+### Change the homepage banner image
+
+The homepage can show a decorative banner image (e.g. an illuminated "OUHS" wordmark) in place of
+the plain text heading. Each committee can swap it for a fresh look without changing anything else.
+
+1. Open **Site settings**.
+2. Upload a **Homepage banner image** — ideally a transparent PNG, roughly 3:1 (wide).
+3. **Save**. Leave it blank to fall back to the plain "Oxford History Society" text heading.
+
 ### Change the announcement banner (the notice on the homepage)
 
 1. Open **Site settings**.

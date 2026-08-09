@@ -23,8 +23,14 @@ const leads = leadRoles
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow reveal" data-d="1">University of Oxford · Est. for history lovers</p>
-        <h1 class="reveal" data-d="2">Oxford<br />History<br />Society</h1>
+        {site.bannerImage ? (
+          <img class="hero-banner reveal" data-d="2" src={site.bannerImage} alt={site.name} width="560" height="200" />
+        ) : (
+          <>
+            <p class="eyebrow reveal" data-d="1">University of Oxford · Est. for history lovers</p>
+            <h1 class="reveal" data-d="2">Oxford<br />History<br />Society</h1>
+          </>
+        )}
         <p class="lede reveal" data-d="3">Talks by leading historians, inter-college socials, and a warm community for anyone who loves the past.</p>
         <div class="hero-actions reveal" data-d="4">
           <a class="btn btn-primary" href={site.joinFormUrl} target="_blank" rel="noopener">Become a member</a>
@@ -131,6 +137,9 @@ const leads = leadRoles
   .hero { padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(1.5rem, 3vw, 2.5rem); position: relative; overflow: hidden; }
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 2rem; }
   .hero-copy h1 { margin: 0.1em 0 0.35em; letter-spacing: -0.01em; }
+  /* Swappable banner wordmark (set in Site settings). Falls back to the text
+     heading above when no image is set. */
+  .hero-banner { width: min(540px, 100%); height: auto; margin: 0 0 1.4rem; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.8rem; }
   .hero-seal { display: flex; justify-content: center; }
   .hero-seal img {
@@ -192,7 +201,7 @@ const leads = leadRoles
     font-family: var(--font-display);
     font-size: 3rem;
     color: var(--gold-soft);
-    opacity: 0.45;
+    opacity: 0.7;
     line-height: 1;
     display: block;
     margin-bottom: 0.4rem;

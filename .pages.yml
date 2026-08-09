@@ -27,6 +27,10 @@ content:
         label: Announcement banner (leave blank to hide)
         type: string
         required: false
+      - name: bannerImage
+        label: Homepage banner image (optional — a transparent PNG wordmark; swap it each year for a fresh look)
+        type: image
+        required: false
       - name: joinFormUrl
         label: Membership / join form link (share link)
         type: string
