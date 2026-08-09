@@ -34,6 +34,7 @@ const year = 2026;
 
   <div class="wrap foot-fine">
     <p>© {year} Oxford University History Society. A registered student society of the University of Oxford.</p>
+    <p class="foot-credit">Historical engravings of the Radcliffe Camera courtesy of the <a href="https://wellcomecollection.org/" target="_blank" rel="noopener">Wellcome Collection</a> (CC BY 4.0).</p>
   </div>
 </footer>
 
@@ -43,7 +44,24 @@ const year = 2026;
     background: var(--navy);
     color: rgba(244, 238, 222, 0.82);
     padding-block: clamp(2.75rem, 5vw, 4rem) 1.5rem;
+    position: relative;
+    overflow: hidden;
   }
+  /* Faint historical engraving (Radcliffe Camera library interior) for depth. */
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: min(720px, 60%);
+    z-index: 0;
+    pointer-events: none;
+    background: url('/engravings/radcliffe-interior.webp') no-repeat right center;
+    background-size: cover;
+    opacity: 0.09;
+    -webkit-mask-image: linear-gradient(to left, #000 10%, transparent 92%);
+    mask-image: linear-gradient(to left, #000 10%, transparent 92%);
+  }
+  .site-footer > .wrap { position: relative; z-index: 1; }
   .foot {
     display: grid;
     grid-template-columns: 1.6fr 1fr 1fr 1fr;
@@ -76,6 +94,8 @@ const year = 2026;
     border-top: 1px solid rgba(244, 238, 222, 0.16);
   }
   .foot-fine p { margin: 0; font-size: 0.82rem; color: rgba(244, 238, 222, 0.55); }
+  .foot-credit { margin-top: 0.4rem !important; font-size: 0.72rem !important; color: rgba(244, 238, 222, 0.4) !important; }
+  .foot-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
   @media (max-width: 960px) {
     .foot { grid-template-columns: 1fr 1fr; }
