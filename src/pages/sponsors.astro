@@ -51,7 +51,7 @@ const list = sponsors.sponsors ?? [];
 
 <style>
   .sponsors-body { padding-top: 0; }
-  .sponsors-eng { max-width: 620px; margin: 3rem auto 0; }
+  .sponsors-eng { max-width: 560px; margin: 2.5rem auto 0; }
   .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
   .sponsor-card {
     display: flex;
@@ -79,7 +79,8 @@ const list = sponsors.sponsors ?? [];
   .sponsor-blurb { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
 
   .empty-panel {
-    max-width: 620px;
+    max-width: 560px;
+    margin-inline: auto;
     padding: 2.5rem;
     background: var(--paper);
     border: 1px solid var(--rule);

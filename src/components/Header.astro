@@ -174,17 +174,19 @@ const here = Astro.url.pathname.replace(/\/+$/, '') || '/';
       transition: transform 0.25s ease, opacity 0.2s ease;
     }
     .nav {
-      position: fixed;
-      inset: 72px 0 auto 0;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
       flex-direction: column;
       align-items: flex-start;
       gap: 0;
       background: var(--cream-soft);
       border-bottom: 1px solid var(--rule);
-      padding: 0.5rem var(--gutter) 1.5rem;
+      padding: 0 var(--gutter);
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      visibility: hidden;
+      transition: max-height 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
       box-shadow: var(--shadow);
     }
     .nav-link, .nav-ig { padding: 0.85rem 0; width: 100%; border-bottom: 1px solid var(--rule-soft); font-size: 0.95rem; }
@@ -196,7 +198,7 @@ const here = Astro.url.pathname.replace(/\/+$/, '') || '/';
       text-align: center;
       width: 100%;
     }
-    .nav-toggle:checked ~ .nav { max-height: 85vh; }
+    .nav-toggle:checked ~ .nav { max-height: 85vh; visibility: visible; padding: 0.5rem var(--gutter) 1.5rem; }
     .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
     .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
