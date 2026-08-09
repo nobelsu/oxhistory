@@ -40,15 +40,12 @@ const typeLabel = { academic: 'Academic', social: 'Social', welfare: 'Welfare' }
     gap: 1.4rem;
     padding: 1.6rem;
     background: var(--paper);
-    border: 1px solid var(--rule);
+    border: 1px solid var(--rule-soft);
     border-radius: 3px;
-    box-shadow: 0 12px 34px -26px rgba(0, 24, 50, 0.5);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    transition: border-color 0.2s ease;
   }
   .event-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 22px 44px -26px rgba(0, 24, 50, 0.55);
-    border-color: var(--gold-soft);
+    border-color: var(--royal);
   }
 
   .date-chip {
