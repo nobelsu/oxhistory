@@ -10,26 +10,23 @@ const year = 2026;
       <p class="foot-name">Oxford University History Society</p>
     </div>
 
-    <nav class="foot-nav" aria-label="Footer">
+    <nav class="foot-nav" aria-label="Pages">
       <a href="/about">About</a>
       <a href="/events">Events</a>
       <a href="/committee">Committee</a>
+    </nav>
+
+    <nav class="foot-nav" aria-label="More pages">
       <a href="/sponsors">Sponsors</a>
       <a href="/contact">Contact us</a>
       <a href="/join">Join</a>
     </nav>
 
-    <nav class="foot-nav" aria-label="Governance">
+    <nav class="foot-nav" aria-label="Governance & social">
       <a href="/constitution">Constitution</a>
       <a href="/complaints">Complaints Procedure</a>
+      <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">@{site.instagramHandle}</a>
     </nav>
-
-    <div class="foot-social">
-      <a href={`https://instagram.com/${site.instagramHandle}`} target="_blank" rel="noopener">
-        @{site.instagramHandle}
-      </a>
-      {site.contactEmail && <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>}
-    </div>
   </div>
 
   <div class="wrap foot-fine">
