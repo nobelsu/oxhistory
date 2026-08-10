@@ -1,6 +1,6 @@
-# Oxford University History Society — website
+# Oxford History Society — website
 
-The website for the Oxford University History Society (OUHS). Built to be **maintained by a
+The website for the Oxford History Society (OUHS). Built to be **maintained by a
 non-technical committee member** through a visual CMS, and to satisfy the University's requirement
 that the society publish a website showing current contacts and its constitution.
 
