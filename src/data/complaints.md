@@ -1,8 +1,8 @@
-This document sets out the procedure for complaints ("Complaints") against a member or members of the Oxford History Society (the "Club"), including for breach of the Club's Code of Conduct or the University of Oxford's Policy and Procedure on Harassment.
+This document sets out the procedure for complaints ("Complaints") against a member or members of the Oxford History Society (the "Club"), including for breach of the Club's Code of Conduct.
 
 ## Applicability of the procedure
 
-This procedure applies where a person believes that a Club member or members have failed to act in accordance with the Club's Code of Conduct, the University of Oxford's Policy and Procedure on Harassment, or have acted in breach of their obligations under the Club Constitution, during or in connection with Club activities.
+This procedure applies where a person believes that a Club member or members have failed to act in accordance with the Club's Code of Conduct, or have acted in breach of their obligations under the Club Constitution, during or in connection with Club activities.
 
 ## Definition of the "Committee"
 

@@ -2,7 +2,7 @@
 
 ## Name and Objects
 
-The Club is called the Oxford History Society (hereafter referred to as "the Club"). The Club's objects are the support, development, improvement and promotion of history in the University of Oxford insofar as such objects are charitable; and the income and property of the Club shall be applied solely to those objects.
+The Club is called the Oxford History Society (hereafter referred to as "the Club"). The Club's objects are the support, development, improvement and promotion of history insofar as such objects are charitable; and the income and property of the Club shall be applied solely to those objects.
 
 ## Compliance
 
