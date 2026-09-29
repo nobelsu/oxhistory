@@ -5,6 +5,7 @@ time: 3:00 PM - 5:00 PM
 type: welfare
 location: Fantastea
 summary: Drop in sometime between 3 and 5 to meet fellow history-aligned
-  freshers and get advice on note-taking, essays, lectures, and any question.
+  freshers and get advice on note-taking, essays, lectures, and any question you
+  have.
 draft: false
 ---
