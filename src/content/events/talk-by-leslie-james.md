@@ -1,6 +1,6 @@
 ---
 title: Talk by Leslie James
-date: 2026-09-29
+date: 2026-10-15
 time: 5:00 PM - 6:00 PM
 type: academic
 location: Jesus College, Habakkuk Room
