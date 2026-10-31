@@ -44,13 +44,6 @@
       "photo": "/committee/natalya-downing.jpg"
     },
     {
-      "role": "Sponsorship and Marketing Director",
-      "name": "Polly Tinline",
-      "college": "St Anne's College",
-      "subject": "English",
-      "photo": "/committee/polly-tinline.jpg"
-    },
-    {
       "role": "Academic Events Officer",
       "name": "Oonagh Mathur",
       "college": "Keble College",
@@ -63,13 +56,6 @@
       "college": "St Hugh's College",
       "subject": "History",
       "photo": "/committee/gavriella-epstein-lightman.jpg"
-    },
-    {
-      "role": "Academic Events Officer",
-      "name": "Oran Docker",
-      "college": "Somerville College",
-      "subject": "History",
-      "photo": "/committee/oran-docker.jpg"
     },
     {
       "role": "Social Events Officer",
@@ -91,6 +77,20 @@
       "college": "The Queen's College",
       "subject": "History",
       "photo": "/committee/jaspreet-kaur.jpg"
+    },
+    {
+      "role": "Freshers' Representative",
+      "name": "Seren Rutherford",
+      "college": "Lincoln College",
+      "subject": "History",
+      "photo": "/committee/Seren Website.jpeg"
+    },
+    {
+      "role": "Postgraduate Representative",
+      "name": "Lydia Jones",
+      "college": "Kellogg College, Oxford",
+      "subject": "MSt in Literature and Arts",
+      "photo": "/committee/WhatsApp Image 2026-10-30 at 13.29.52.jpeg"
     }
   ]
 }
